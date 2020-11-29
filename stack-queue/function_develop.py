@@ -7,31 +7,24 @@ def solution():
     period = []  #stack
     
     for i in range(len(progresses)):
-        leftDay = math.ceil((100 - progresses[i])/speeds[i])
+        leftDay = -((progresses[i] - 100)//speeds[i])
         period.append(leftDay)
-    
-    current = 0
-    count = 1
-    compare = 1
-    
-    while current < len(period):  
         
-        if(period[current] >= period[compare]):
+    
+    count = 1
+    period.reverse()
+    current = period.pop()
+    
+    while period :
+        
+        compare = period.pop()
+        
+        if(current >= compare):
             count += 1
-            compare += 1
-        else: 
+        else:
             answer.append(count)
             count = 1
             current = compare
-            
-            if(compare >= len(period)):
-                answer.append(count)
-                break
-            else:
-                compare += 1
-                
-        
-        
-
-    print(period)
+    
+    answer.append(count)
     return answer
