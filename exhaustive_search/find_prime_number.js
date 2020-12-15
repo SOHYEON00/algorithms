@@ -105,13 +105,17 @@ const getPermutations = function (arr, selectNumber) {
         const permutations = getPermutations(rest, selectNumber - 1); // 나머지에 대해 순열을 구한다. 
         const attached = permutations.map((permutation) => [fixed, ...permutation]); // 돌아온 순열에 대해 떼 놓은(fixed) 값 붙이기 
         results.push(...attached); // 배열 spread syntax 로 모두다 push 
-    }); return results; // 결과 담긴 results return 
+    }); 
+    
+    return results; // 결과 담긴 results return 
 }; 
 
 function solution(numbers) { 
     var answer = 0; 
     const arr = new Array(numbers.length).fill(0).map((ele,idx)=> numbers[idx]); 
-    const set = new Set(); for(let i=1; i<=arr.length; i++){ // i 개의 순열을 구한다. 
+    const set = new Set(); 
+    
+    for(let i=1; i<=arr.length; i++){ // i 개의 순열을 구한다. 
         const result = getPermutations(arr, i); // i 개의 순열을 순회하며
         result.forEach((ele)=>{ // 문자열을 합쳐 
             const num = parseInt(ele.join("")); 
