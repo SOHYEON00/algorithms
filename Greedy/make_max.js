@@ -43,3 +43,10 @@ function solution(number, k) {
     
     return answer;
 }
+
+
+
+
+
+
+        
