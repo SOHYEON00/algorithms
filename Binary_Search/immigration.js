@@ -1,31 +1,3 @@
-function solution(n, times) {
-    var answer = 0;
-    let min = 1;
-    let max = Math.max(...times)*n;
-    let key = Math.floor((max+min)/2);
-    times.sort((a, b) => a - b);
-    
-    if(n <= times.length) { return answer=times[n-1];}
-    
-    while(min<max) {
-        
-        let num = 0;
-        for(let i=0; i<times.length; i++){
-            num += Math.floor(key/times[i]);
-        }
-        console.log(min, key, max);
-        console.log(num);
-        
-        if(num >= n) { max = key-1; answer = key;}
-        else{ min = key+1;}
-        
-        key = Math.floor((max+min)/2);
-    }
-    
-    return answer;
-}
-
-// 테스트케이스 4,6번이 계속 틀림..
 
 
 function solution(n, times) {
@@ -37,8 +9,9 @@ function solution(n, times) {
     oriTimes.sort((a, b) => a - b); //오름차순 정렬
     
     // 기다리는 사람 수 <= 심사관 수 인 경우
-    if(n <= times.length) { return answer=oriTimes[n-1];} 
-    
+    // if(n <= times.length) { return answer=oriTimes[n-1];} 
+    // 이거 없으니까 4번 통과...
+
     // console.log(oriTimes);
 
     //min<=max까지 하니까 6번 통과...!
